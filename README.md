@@ -1,5 +1,5 @@
-🛸 🌎　°　　🌓　•　　.°•　🚀 ✯ 　　　★　*　　　　　°　🛰 　°·　　🪐 .　　　•　° ★　• ☄
-▁▂▃▄▅▆▇▇▆▅▄▃▁▂▁▂▃▄▅▆▇▇▆▅▄▃▁▂
+                     🛸 🌎　°　　🌓　•　　.°•　🚀 ✯ 　　
+★　*　°　🛰 　▁▂▃▄▅▆▇▇▆▅▄▃▁▂▁▂▃▄▅▆▇▇▆▅▄▃▁▂　　🪐  ★　• ☄
 
 University of Prishtina "Hasan Prishtina"
 Faculty of Electrical and Computer Engineering
@@ -8,9 +8,13 @@ Project Title: Socket Programming
 
 Contributors:
 Brela
+
 Blerton
+
 Pashtrik
+
 Lorik
+
 Supervisor: Prof. Blerim Rexha & Ass. Msc. Mergim Hoti
 
 📜 Project Description:
