@@ -1,4 +1,5 @@
-🛸 🌎　°　　🌓　•　　.°•　🚀 ✯ 　　　★　*　　　　　°　🛰 　°·　　🪐 .　　　•　° ★　• ☄ ▁▂▃▄▅▆▇▇▆▅▄▃▁▂▁▂▃▄▅▆▇▇▆▅▄▃▁▂
+🛸 🌎　°　　🌓　•　　.°•　🚀 ✯ 　　　★　*　　　　　°　🛰 　°·　　🪐 .　　　•　° ★　• ☄
+▁▂▃▄▅▆▇▇▆▅▄▃▁▂▁▂▃▄▅▆▇▇▆▅▄▃▁▂
 
 University of Prishtina "Hasan Prishtina"
 Faculty of Electrical and Computer Engineering
@@ -11,6 +12,7 @@ Blerton
 Pashtrik
 Lorik
 Supervisor: Prof. Blerim Rexha & Ass. Msc. Mergim Hoti
+
 📜 Project Description:
 This project provides a comprehensive socket programming, covering the essentials of establishing client-server communication, exchanging data, and closing connections in a controlled manner. Socket programming forms the backbone of network communication, enabling applications to send and receive data across local and wide-area networks.
 
