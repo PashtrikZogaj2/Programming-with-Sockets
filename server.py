@@ -1,17 +1,24 @@
+import os
 import socket
 
-# Define the server's IP address and port
-IP_ADDRESS = ''  # Replace with the server's actual IP address
-PORT = 12345  # Replace with any available port number
+BASE_DIR = os.path.expanduser("~/Desktop/ggwp")  # Folder path to your ggwp folder
 
-# Create a UDP socket
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+def ensure_base_dir():
+    if not os.path.exists(BASE_DIR):
+        os.makedirs(BASE_DIR)  # Creates the folder if it doesn't exist
 
-# Bind the socket to the IP address and port
-server_socket.bind((IP_ADDRESS, PORT))
-print(f"UDP server up and listening on {IP_ADDRESS}:{PORT}")
+def handle_request(data, addr, server_socket):
+    # Split the command and arguments
+    command, *args = data.decode("utf-8").split(" ", 1)
 
-# Prompt the server user to input the IP and port for write access
-write_ip = input("Enter the IP address of the client to grant write access: ")
-write_port = int(input("Enter the port number of the client to grant write access: "))
-WRITE_PRIVILEGE_CLIENT = (write_ip, write_port)
+    # File operations
+    if command == "list":
+        files = os.listdir(BASE_DIR)
+        response = "\n".join(files) if files else "No files found."
+    elif command == "read" and args:
+        file_path = os.path.join(BASE_DIR, args[0])
+        if os.path.exists(file_path):
+            with open(file_path, "r") as f:
+                response = f.read()
+        else:
+            response = f"File '{args[0]}' not found."
