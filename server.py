@@ -40,4 +40,24 @@ def handle_request(data, addr, server_socket):
     # Chat messages (anything that's not a file operation)
     else:
         response = f"Chat Message: {data.decode('utf-8')}"
+        def start_server(host="0.0.0.0", port=port):
+    ensure_base_dir()
+
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    server_socket.bind((host, port))
+
+    print(f"Server started on {host}:{port}. Waiting for commands...")
+
+    while True:
+        try:
+            data, addr = server_socket.recvfrom(1024)
+            handle_request(data, addr, server_socket)
+        except KeyboardInterrupt:
+            print("\nServer shutting down.")
+            break
+
+    server_socket.close()
+
+if _name_ == "_main_":
+    start_server()
 
