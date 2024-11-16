@@ -4,7 +4,7 @@ import socket
 def start_client(server_host="ip", server_port=port):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-print(f"Connected to server at {server_host}:{server_port}.")
+    print(f"Connected to server at {server_host}:{server_port}.")
     print("Available commands:")
     print("  list                     - List files")
     print("  read <filename>          - Read a file")
@@ -34,5 +34,5 @@ print(f"Connected to server at {server_host}:{server_port}.")
 
     client_socket.close()
 
-if _name_ == "_main_":
-    start_client()
+if_name_ == "_main_":
+  start_server()
