@@ -24,7 +24,7 @@ def handle_request(data, addr, server_socket):
                 response = f.read()  # Lexon permbajtjen e skedarit
         else:
             response = f"File '{args[0]}' not found."  # Fajlli nuk u gjet
-            elif command == "write" and args:
+    elif command == "write" and args:
         file_name, content = args[0].split(" ", 1)
         file_path = os.path.join(BASE_DIR, file_name)
         with open(file_path, "w") as f:
@@ -40,8 +40,11 @@ def handle_request(data, addr, server_socket):
     # Chat messages (anything that's not a file operation)
     else:
         response = f"Chat Message: {data.decode('utf-8')}"
+        
+        server_socket.sendto(response.encode("utf-8"), addr)
+
         def start_server(host="0.0.0.0", port=port):
-    ensure_base_dir()
+         ensure_base_dir()
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     server_socket.bind((host, port))
