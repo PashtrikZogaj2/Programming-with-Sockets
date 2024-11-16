@@ -22,4 +22,17 @@ print(f"Connected to server at {server_host}:{server_port}.")
                 print("Exiting chat.")
                 break
 
-            # Send the message to the server
+             # Send the message to the server
+            client_socket.sendto(message.encode("utf-8"), (server_host, server_port))
+
+            # Receive and display the server's response
+            response, _ = client_socket.recvfrom(1024)
+            print(response.decode("utf-8"))
+        except KeyboardInterrupt:
+            print("\nExiting client.")
+            break
+
+    client_socket.close()
+
+if _name_ == "_main_":
+    start_client()
