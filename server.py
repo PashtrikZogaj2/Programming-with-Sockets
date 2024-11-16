@@ -32,3 +32,12 @@ def handle_request(data, addr, server_socket):
         response = f"File '{file_name}' written successfully."
     elif command == "delete" and args:
         file_path = os.path.join(BASE_DIR, args[0])
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            response = f"File '{args[0]}' deleted successfully."
+        else:
+            response = f"File '{args[0]}' not found."
+    # Chat messages (anything that's not a file operation)
+    else:
+        response = f"Chat Message: {data.decode('utf-8')}"
+
