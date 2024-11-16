@@ -24,3 +24,11 @@ def handle_request(data, addr, server_socket):
                 response = f.read()  # Lexon permbajtjen e skedarit
         else:
             response = f"File '{args[0]}' not found."  # Fajlli nuk u gjet
+            elif command == "write" and args:
+        file_name, content = args[0].split(" ", 1)
+        file_path = os.path.join(BASE_DIR, file_name)
+        with open(file_path, "w") as f:
+            f.write(content)
+        response = f"File '{file_name}' written successfully."
+    elif command == "delete" and args:
+        file_path = os.path.join(BASE_DIR, args[0])
