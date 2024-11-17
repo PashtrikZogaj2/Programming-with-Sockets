@@ -144,9 +144,8 @@ def start_server(host="0.0.0.0", port=24525):
 
     server_socket.close()
 
-
-if _name_ == "_main_":
-  start_server()
+if __name__ == "_main_":
+   start_server()
 
 
 
