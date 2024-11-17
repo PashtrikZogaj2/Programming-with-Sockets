@@ -81,20 +81,23 @@ def handle_request(data, addr, server_socket):
             
             server_socket.sendto(response.encode("utf-8"), addr)
 
-            def start_server(host="0.0.0.0", port=port):
-            ensure_base_dir()
+def start_server(host="0.0.0.0", port=24525):
+    ensure_base_dir()
+    users = load_users()
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     server_socket.bind((host, port))
 
     print(f"Server started on {host}:{port}. Waiting for commands...")
+    log_activity("Server started.")
 
     while True:
         try:
             data, addr = server_socket.recvfrom(1024)
-            handle_request(data, addr, server_socket)
+            handle_request(data, addr, server_socket, users)
         except KeyboardInterrupt:
             print("\nServer shutting down.")
+            log_activity("Server shutting down.")
             break
 
     server_socket.close()
