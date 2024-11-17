@@ -1,0 +1,9 @@
+{
+    "users": {
+      "brela": {"password": "1", "role": "user"},
+      "pashtrik": {"password": "2", "role": "user"},
+      "lorik": {"password": "3", "role": "user"},
+      "Blerton": {"password": "4", "role": "admin"}
+    }
+  }
+  
