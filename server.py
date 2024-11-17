@@ -16,7 +16,17 @@ def load_users():
     """Load user data from the JSON file."""
     with open("users.json", "r") as f:
         return json.load(f)["users"]
-    
+
+
+def authenticate(username, password, users):
+    """Authenticate a user based on the JSON data."""
+    return username in users and users[username]["password"] == password
+
+
+def get_role(username, users):
+    """Get the role of a user."""
+    return users[username]["role"] if username in users else None
+
 
 # Krijon folderin nese nuk ekziston
 def ensure_base_dir():
