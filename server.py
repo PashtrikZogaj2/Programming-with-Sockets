@@ -17,6 +17,7 @@ def log_activity(message):
     timestamp = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
     print(f"{timestamp} {message}")
 
+
 def load_users():
     """Load user data from the JSON file."""
     with open("users.json", "r") as f:
@@ -42,26 +43,10 @@ def handle_request(data, addr, server_socket, users):
         username, password = args[0].split(" ", 1)
         if authenticate(username, password, users):
             LOGGED_IN_USERS[addr] = username
-            response = f"Logged in successfully as '{username}'."                 
+            response = f"Logged in successfully as '{username}'."
             log_activity(f"{username} logged in from {addr}.")
         else:
             response = "Invalid username or password."
-    elif addr in LOGGED_IN_USERS:
-        username = LOGGED_IN_USERS[addr]
-        role = get_role(username, users)
-
-        if command == "list":
-            files = os.listdir(BASE_DIR)
-            response = "\n".join(files) if files else "No files found."
-            log_activity(f"{username} executed 'list' command.")
-        elif command == "read" and args:
-            file_path = os.path.join(BASE_DIR, args[0])
-            if os.path.exists(file_path):
-                with open(file_path, "r") as f:
-                    response = f.read()
-                log_activity(f"{username} read file '{args[0]}'.")
-            else:
-              response = "Invalid username or password."
     elif addr in LOGGED_IN_USERS:
         username = LOGGED_IN_USERS[addr]
         role = get_role(username, users)
@@ -117,8 +102,8 @@ def handle_request(data, addr, server_socket, users):
             response = f"Unknown command: {command}"
             log_activity(f"{username} issued an unknown command: {command}")
     else:
-     response = "You must log in first using 'login <username> <password>'."
-    log_activity(f"Unauthorized attempt to execute '{command}' from {addr}.")
+        response = "You must log in first using 'login <username> <password>'."
+        log_activity(f"Unauthorized attempt to execute '{command}' from {addr}.")
 
     server_socket.sendto(response.encode("utf-8"), addr)
 
@@ -144,10 +129,6 @@ def start_server(host="0.0.0.0", port=24525):
 
     server_socket.close()
 
-if __name__ == "_main_":
-   start_server()
 
-
-
-
-
+if __name__ == "__main__":
+    start_server()

@@ -1,6 +1,6 @@
 import socket
 
-def start_client(server_host="ip", server_port=24525):
+def start_client(server_host="192.168.1.8", server_port=24525):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     print(f"Connected to server at {server_host}:{server_port}.")
@@ -14,7 +14,8 @@ def start_client(server_host="ip", server_port=24525):
         print(response.decode("utf-8"))
         if "Logged in successfully" in response.decode("utf-8"):
             break
-            print("Available commands:")
+
+    print("Available commands:")
     print("  list                     - List files")
     print("  read <filename>          - Read a file")
     print("  write <filename> <text>  - Write text to a file (admin only)")
